@@ -11,13 +11,16 @@
         <!--Create Event-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DatePicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CreateEventViewController" customModule="DatePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="7t3-Ek-BfV">
-                                <rect key="frame" x="36.666666666666657" y="318" width="320" height="216"/>
+                                <rect key="frame" x="37" y="318" width="320" height="216"/>
+                                <connections>
+                                    <action selector="datePickerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="T7B-lS-ftR"/>
+                                </connections>
                             </datePicker>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="create event" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RZH-zT-tfl">
                                 <rect key="frame" x="20" y="271.66666666666669" width="353" height="38.333333333333314"/>
@@ -28,6 +31,10 @@
                                 <rect key="frame" x="135.66666666666666" y="574" width="121.99999999999997" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Create Event"/>
+                                <connections>
+                                    <action selector="createEventButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ke2-rD-gaR"/>
+                                    <segue destination="FSe-bb-4Gq" kind="show" id="Lbt-Bg-fH6"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP NO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8x9-Dn-PEq">
                                 <rect key="frame" x="160.66666666666666" y="617" width="72" height="21"/>
@@ -51,15 +58,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="zWY-g5-eCy"/>
+                    <connections>
+                        <outlet property="createEventButton" destination="ycM-hH-QJq" id="T0v-e7-n9I"/>
+                        <outlet property="datePicker" destination="7t3-Ek-BfV" id="qVN-2R-BEt"/>
+                        <outlet property="eventTextField" destination="RZH-zT-tfl" id="4NY-MH-gWW"/>
+                        <outlet property="rsvpLabel" destination="8x9-Dn-PEq" id="o72-vH-Kii"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1028.2442748091603" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Detail View Controller-->
         <scene sceneID="NhM-Fx-bLo">
             <objects>
-                <viewController id="FSe-bb-4Gq" sceneMemberID="viewController">
+                <viewController id="FSe-bb-4Gq" customClass="EventDetailViewController" customModule="DatePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9k9-yj-5FO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,17 +85,49 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZb-Ej-fjD">
                                 <rect key="frame" x="172" y="456.66666666666669" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchTapped:" destination="FSe-bb-4Gq" eventType="valueChanged" id="b9U-yh-Kb9"/>
+                                </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-Ly-oD3">
+                                <rect key="frame" x="145.66666666666666" y="354.66666666666669" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taF-C2-TEs">
+                                <rect key="frame" x="134" y="527.66666666666663" width="125" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Submit RSVP"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The event is set for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BL-XL-Nma">
+                                <rect key="frame" x="91.333333333333329" y="319" width="210.33333333333337" height="27.666666666666686"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pBY-4M-vXY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="taF-C2-TEs" firstAttribute="centerX" secondItem="9k9-yj-5FO" secondAttribute="centerX" id="6fz-7J-ihn"/>
+                            <constraint firstItem="vVi-Ly-oD3" firstAttribute="centerX" secondItem="9k9-yj-5FO" secondAttribute="centerX" id="JQ1-qw-bRe"/>
+                            <constraint firstItem="R8r-KW-zIf" firstAttribute="top" secondItem="vVi-Ly-oD3" secondAttribute="bottom" constant="40" id="Knx-2t-gqs"/>
                             <constraint firstItem="R8r-KW-zIf" firstAttribute="centerY" secondItem="9k9-yj-5FO" secondAttribute="centerY" id="Rvi-Hf-du3"/>
+                            <constraint firstItem="1BL-XL-Nma" firstAttribute="centerX" secondItem="9k9-yj-5FO" secondAttribute="centerX" id="XYb-oj-5eZ"/>
                             <constraint firstItem="QZb-Ej-fjD" firstAttribute="centerX" secondItem="9k9-yj-5FO" secondAttribute="centerX" id="YzF-VN-DEH"/>
+                            <constraint firstItem="vVi-Ly-oD3" firstAttribute="top" secondItem="1BL-XL-Nma" secondAttribute="bottom" constant="8" id="iS4-F3-WzV"/>
+                            <constraint firstItem="taF-C2-TEs" firstAttribute="top" secondItem="QZb-Ej-fjD" secondAttribute="bottom" constant="40" id="mHZ-xk-TT9"/>
                             <constraint firstItem="R8r-KW-zIf" firstAttribute="centerX" secondItem="9k9-yj-5FO" secondAttribute="centerX" id="oX8-yb-Nm2"/>
                             <constraint firstItem="QZb-Ej-fjD" firstAttribute="top" secondItem="R8r-KW-zIf" secondAttribute="bottom" constant="20" id="qe7-eI-DBk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Mjl-3r-Ghv"/>
+                    <connections>
+                        <outlet property="eventName" destination="1BL-XL-Nma" id="rip-MZ-ttn"/>
+                        <outlet property="selectedDateLabel" destination="vVi-Ly-oD3" id="o1k-O5-TT1"/>
+                        <outlet property="switchControl" destination="QZb-Ej-fjD" id="Iz6-Qp-QhD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXx-Ar-0Bp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
