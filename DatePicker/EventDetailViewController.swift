@@ -40,8 +40,8 @@ class EventDetailViewController: UIViewController {
         eventName.text = event?.name ?? "Event name not available"
     }
     
+    
     @IBAction func rsvpChanged(_ sender: UISwitch) {
+        event?.willAttend = sender.isOn
     }
-    
-    
 }

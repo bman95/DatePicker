@@ -86,7 +86,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZb-Ej-fjD">
                                 <rect key="frame" x="172" y="456.66666666666669" width="51" height="31"/>
                                 <connections>
-                                    <action selector="switchTapped:" destination="FSe-bb-4Gq" eventType="valueChanged" id="b9U-yh-Kb9"/>
+                                    <action selector="rsvpChanged:" destination="FSe-bb-4Gq" eventType="valueChanged" id="jAA-1K-jSj"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVi-Ly-oD3">
@@ -99,6 +99,9 @@
                                 <rect key="frame" x="134" y="527.66666666666663" width="125" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Submit RSVP"/>
+                                <connections>
+                                    <segue destination="B7q-KF-V2j" kind="unwind" unwindAction="updateUIFromUnwindSegueWithSegue:" id="CGW-tR-ydv"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The event is set for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BL-XL-Nma">
                                 <rect key="frame" x="91.333333333333329" y="319" width="210.33333333333337" height="27.666666666666686"/>
@@ -130,6 +133,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXx-Ar-0Bp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="B7q-KF-V2j" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1782" y="4"/>
         </scene>

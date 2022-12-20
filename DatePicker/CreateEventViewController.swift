@@ -28,8 +28,6 @@ class CreateEventViewController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         eventTextField.delegate = self
@@ -55,6 +53,14 @@ class CreateEventViewController: UIViewController {
         event.name = eventTextField.text ?? ""
     }
     
+    // unwind segue action
+    // need to create an IBAction for the unwind segue
+    // it's required to have a parameter of type UIStoryboardSegue in the unwind segue action as it is the only way IB can recognize an unwind segue to connect to
+    // what differs from prepare for segue is segue.source
+    @IBAction func updateUIFromUnwindSegue(segue: UIStoryboardSegue) {
+        guard let eventDetailViewController = segue.source as? EventDetailViewController else { return }
+        event = eventDetailViewController.event
+    }
 }
 
 extension CreateEventViewController: UITextFieldDelegate {
